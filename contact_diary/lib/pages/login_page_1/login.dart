@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../../routes/routes_utils.dart';
+import 'package:login_page/headers.dart';
 
 Widget login({required size, required context}) {
   return Padding(
@@ -14,22 +11,21 @@ Widget login({required size, required context}) {
           ),
           Text(
             "FIND",
-            style: GoogleFonts.rubikBubbles(
+            style: GoogleFonts.caveat(
               color: Colors.white,
-              fontSize: 35,
-              letterSpacing: 3,
+              fontWeight: FontWeight.bold,
+              fontSize: 60,
+              letterSpacing: 5,
             ),
           ),
-          SizedBox(
-            height: size.height * 0.62,
-          ),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.all(16),
             child: Align(
               alignment: const Alignment(0, 0.6),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, Routes.loginpage2);
+                  Navigator.pushReplacementNamed(context, Routes.loginpage2);
                 },
                 child: Container(
                   height: 50,

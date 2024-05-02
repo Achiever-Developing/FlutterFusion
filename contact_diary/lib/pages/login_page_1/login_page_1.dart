@@ -1,11 +1,4 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:login_page/pages/login_page_1/login.dart';
-import 'package:login_page/routes/routes_utils.dart';
-
-import 'background.dart';
+import 'package:login_page/headers.dart';
 
 class LoginPage extends StatelessWidget {
   @override

@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:login_page/models/userNameModal.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../routes/routes_utils.dart';
+import 'package:login_page/headers.dart';
 
 class UserNameController extends ChangeNotifier {
   late SharedPreferences preferences;

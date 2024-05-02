@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'dart:async';
 
-import '../../controler/usernameController.dart';
-import '../../routes/routes_utils.dart';
+import 'package:login_page/headers.dart';
 
 Widget form({required context}) {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -24,6 +22,8 @@ Widget form({required context}) {
             },
             validator: (val) => (val!.isEmpty) ? "Enter your username" : null,
             decoration: InputDecoration(
+              fillColor: Colors.orange.withOpacity(0.4),
+              filled: true,
               focusColor: Colors.black,
               contentPadding: const EdgeInsets.all(16),
               focusedBorder: OutlineInputBorder(
@@ -33,7 +33,7 @@ Widget form({required context}) {
                 ),
               ),
               label: const Text(
-                " User Name",
+                "User Name",
                 style: TextStyle(
                   color: Colors.black,
                 ),
@@ -60,6 +60,8 @@ Widget form({required context}) {
             },
             validator: (val) => (val!.isEmpty) ? "Enter your password" : null,
             decoration: InputDecoration(
+              fillColor: Colors.orange.withOpacity(0.4),
+              filled: true,
               focusColor: Colors.black,
               contentPadding: const EdgeInsets.all(16),
               focusedBorder: OutlineInputBorder(
@@ -69,7 +71,7 @@ Widget form({required context}) {
                 ),
               ),
               label: const Text(
-                " Password",
+                "Password",
                 style: TextStyle(
                   color: Colors.black,
                 ),
@@ -86,9 +88,10 @@ Widget form({required context}) {
             ),
             textInputAction: TextInputAction.done,
             cursorColor: Colors.black,
+            obscureText: true,
           ),
         ),
-        const Text("Forgot Password"),
+        const Text("Forgot Password ?"),
         Padding(
           padding: const EdgeInsets.all(16),
           child: Align(
@@ -112,12 +115,14 @@ Widget form({required context}) {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
                   }
-                  Provider.of<UserNameController>(context, listen: false)
-                      .userNameF();
-                  Navigator.pushNamed(context, Routes.homepage);
+                  if (_formKey.currentState!.validate()) {
+                    Provider.of<UserNameController>(context, listen: false)
+                        .userNameF();
+                    Navigator.pushReplacementNamed(context, Routes.homepage);
+                  }
                 },
                 child: const Center(
-                  child: Text("LogIn"),
+                  child: Text("Log In"),
                 ),
               ),
             ),

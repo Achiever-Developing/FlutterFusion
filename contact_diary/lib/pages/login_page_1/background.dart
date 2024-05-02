@@ -1,6 +1,4 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
+import 'package:login_page/headers.dart';
 
 Widget background() {
   return Container(
@@ -8,8 +6,8 @@ Widget background() {
     width: double.infinity,
     decoration: const BoxDecoration(
       image: DecorationImage(
-        image: NetworkImage(
-          "https://en.khabarhardin.com/wp-content/uploads/2023/08/d87d0629-26b3-4c70-b11f-a16c7d113416.jpeg",
+        image: AssetImage(
+          "lib/assets/images/bg.jpg",
         ),
         fit: BoxFit.cover,
       ),

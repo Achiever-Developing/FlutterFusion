@@ -1,8 +1,6 @@
-import 'dart:ui';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:login_page/pages/login_page_2/form.dart';
+import 'package:login_page/headers.dart';
 
 Widget all({required context, required size}) {
   return Stack(
@@ -23,8 +21,8 @@ Widget all({required context, required size}) {
             Radius.circular(50),
           ),
           image: DecorationImage(
-            image: NetworkImage(
-              "https://en.khabarhardin.com/wp-content/uploads/2023/08/d87d0629-26b3-4c70-b11f-a16c7d113416.jpeg",
+            image: AssetImage(
+              "lib/assets/images/bg.jpg",
             ),
             fit: BoxFit.cover,
           ),
@@ -40,8 +38,12 @@ Widget all({required context, required size}) {
               ),
               Text(
                 "FIND",
-                style: GoogleFonts.rubikBubbles(
-                    color: Colors.white, fontSize: 35, letterSpacing: 3),
+                style: GoogleFonts.caveat(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 60,
+                  letterSpacing: 5,
+                ),
               ),
               const Text(
                 "Create your own itenerary!",
@@ -59,8 +61,8 @@ Widget all({required context, required size}) {
         child: Align(
           alignment: const Alignment(0, 0.7),
           child: Container(
-            height: 400,
             width: 400,
+            height: 412,
             decoration: const BoxDecoration(
               color: Color(0xffFFFE0B5),
               borderRadius: BorderRadius.all(
