@@ -3,19 +3,20 @@ import 'dart:async';
 import 'package:login_page/headers.dart';
 
 Widget form({required context}) {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  return Form(
-    key: _formKey,
-    child: Column(
-      children: [
-        const SizedBox(
-          height: 100,
+  List<GlobalKey<FormState>> formKey =
+      List.generate(2, (index) => GlobalKey<FormState>());
+  return Column(
+    children: [
+      const SizedBox(
+        height: 100,
+      ),
+      Padding(
+        padding: const EdgeInsets.only(
+          left: 16,
+          right: 16,
         ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 16,
-            right: 16,
-          ),
+        child: Form(
+          key: formKey[0],
           child: TextFormField(
             onSaved: (val) {
               PersonalGlobal.username = val;
@@ -52,13 +53,17 @@ Widget form({required context}) {
             cursorColor: Colors.black,
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(20),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(20),
+        child: Form(
+          key: formKey[1],
           child: TextFormField(
             onSaved: (val) {
-              PersonalGlobal.password = val;
+              PersonalGlobal.userContact = val;
             },
-            validator: (val) => (val!.isEmpty) ? "Enter your password" : null,
+            validator: (val) =>
+                (val!.isEmpty) ? "Enter your Contact Number" : null,
             decoration: InputDecoration(
               fillColor: Colors.orange.withOpacity(0.4),
               filled: true,
@@ -71,7 +76,7 @@ Widget form({required context}) {
                 ),
               ),
               label: const Text(
-                "Password",
+                "Contact",
                 style: TextStyle(
                   color: Colors.black,
                 ),
@@ -91,44 +96,46 @@ Widget form({required context}) {
             obscureText: true,
           ),
         ),
-        const Text("Forgot Password ?"),
-        Padding(
-          padding: const EdgeInsets.all(16),
-          child: Align(
-            alignment: const Alignment(0, 0.6),
-            child: Container(
-              height: 50,
-              width: 150,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.grey,
-                    offset: Offset(3, 3),
-                    blurRadius: 2,
-                  ),
-                ],
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                  }
-                  if (_formKey.currentState!.validate()) {
-                    Provider.of<UserNameController>(context, listen: false)
-                        .userNameF();
-                    Navigator.pushReplacementNamed(context, Routes.homepage);
-                  }
-                },
-                child: const Center(
-                  child: Text("Log In"),
+      ),
+      Padding(
+        padding: const EdgeInsets.all(16),
+        child: Align(
+          alignment: const Alignment(0, 0.6),
+          child: Container(
+            height: 50,
+            width: 150,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(3, 3),
+                  blurRadius: 2,
                 ),
+              ],
+            ),
+            child: GestureDetector(
+              onTap: () {
+                if (formKey[0].currentState!.validate() &&
+                    formKey[1].currentState!.validate()) {
+                  formKey[0].currentState!.save();
+                  formKey[1].currentState!.save();
+                }
+                if (formKey[0].currentState!.validate() &&
+                    formKey[1].currentState!.validate()) {
+                  Provider.of<UserNameController>(context, listen: false)
+                      .userNameF();
+                  Navigator.pushReplacementNamed(context, Routes.homepage);
+                }
+              },
+              child: const Center(
+                child: Text("Log In"),
               ),
             ),
           ),
         ),
-      ],
-    ),
+      ),
+    ],
   );
 }

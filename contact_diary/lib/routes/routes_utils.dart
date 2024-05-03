@@ -26,7 +26,7 @@ class Routes {
 
 class PersonalGlobal {
   static String? username;
-  static String? password;
+  static String? userContact;
 }
 
 class ContactGlobal {

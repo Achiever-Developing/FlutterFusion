@@ -11,13 +11,16 @@ class UserNameController extends ChangeNotifier {
 
   void init() {
     userNameModal = UserNameModal(
-        initalValue: preferences.getString("userName") ?? 'Demo Name');
+        name: preferences.getString("userName") ?? 'Demo Name',
+        password: preferences.getString("userContact") ?? 'Demo Contact');
     isLogin = preferences.getBool("isLogin") ?? false;
   }
 
   void userNameF() {
     userNameModal.userName = PersonalGlobal.username ?? "Demo Name";
     preferences.setString("userName", userNameModal.userName);
+    userNameModal.userContact = PersonalGlobal.userContact ?? "Demo Contact";
+    preferences.setString("userContact", userNameModal.userContact);
     isLogin = !isLogin;
     preferences.setBool("isLogin", isLogin);
     notifyListeners();

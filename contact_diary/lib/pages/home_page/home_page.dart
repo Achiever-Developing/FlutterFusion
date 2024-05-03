@@ -1,3 +1,4 @@
+import 'package:local_auth/local_auth.dart';
 import 'package:login_page/controller/contactContaroller.dart';
 import 'package:login_page/controller/stepperController.dart';
 import 'package:login_page/headers.dart';
@@ -106,9 +107,15 @@ class HomePage extends StatelessWidget {
                     ),
                     //info
                     IconButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed(Routes.introPage, arguments: index);
+                      onPressed: () async {
+                        LocalAuthentication authentication =
+                            LocalAuthentication();
+
+                        bool opened = await authentication.authenticate(
+                            localizedReason: "Open Intro");
+                        if (opened)
+                          Navigator.of(context)
+                              .pushNamed(Routes.introPage, arguments: index);
                       },
                       icon: const Icon(
                         Icons.info,
