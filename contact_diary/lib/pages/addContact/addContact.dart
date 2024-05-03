@@ -183,11 +183,12 @@ class AddContact extends StatelessWidget {
                   ContactGlobal.form[2].currentState!.save();
                 }
                 contact.image = ContactGlobal.contactImage;
-                Provider.of<ContactController>(context, listen: false).addItem(
-                    name: contact.name!,
-                    contact2: contact.contact!,
-                    email: contact.email!);
-                Navigator.pop(context);
+                Provider.of<ContactController>(context, listen: false)
+                    .addContact(contact: contact);
+                if (ContactGlobal.form[0].currentState!.validate() &&
+                    ContactGlobal.form[1].currentState!.validate()) {
+                  Navigator.pop(context);
+                }
               },
               child: const Text("Save"),
             ),

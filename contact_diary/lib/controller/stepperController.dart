@@ -38,6 +38,10 @@ class StepperController extends ChangeNotifier {
             : StepState.disabled;
   }
 
+  void reload() {
+    CurrentStep = 0;
+    ContactGlobal.contactImage = null;
+  }
 
   Future<void> getImage({required ImageSource source}) async {
     ImagePicker picker = ImagePicker();
