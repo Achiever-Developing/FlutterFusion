@@ -1,13 +1,10 @@
 import 'package:login_page/headers.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../../../controller/contactContaroller.dart';
 
 Widget subContainer({required index, required context}) {
   return Align(
     alignment: const Alignment(0, 1),
     child: Container(
-      height: 450,
+      height: 400,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

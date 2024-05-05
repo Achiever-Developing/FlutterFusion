@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:login_page/headers.dart';
 
 Widget all({required context, required size}) {

@@ -1,12 +1,5 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
-import 'package:login_page/pages/addContact/addContact.dart';
-
-import '../pages/home_page/home_page.dart';
-import '../pages/intro_page/intro_page.dart';
-import '../pages/login_page_1/login_page_1.dart';
-import '../pages/login_page_2/login_page_2.dart';
+import 'package:login_page/headers.dart';
 
 class Routes {
   static String loginpage = '/';
@@ -14,6 +7,12 @@ class Routes {
   static String homepage = 'homepage';
   static String addContact = 'addcontact';
   static String introPage = 'intropage';
+  static String QRcode = 'qrcode';
+  static String editPage = 'editpage';
+  static String hideContact = 'hidecontact';
+  static String hideIntroPage = 'hideintroPage';
+  static String hideQRCode = 'hideqrCode';
+  static String hideEditPage = 'hideEditPage';
 
   static Map<String, WidgetBuilder> routes = {
     Routes.loginpage: (context) => LoginPage(),
@@ -21,6 +20,12 @@ class Routes {
     Routes.homepage: (context) => HomePage(),
     Routes.addContact: (context) => AddContact(),
     Routes.introPage: (context) => IntroPage(),
+    Routes.QRcode: (context) => QRCode(),
+    Routes.editPage: (context) => EditPage(),
+    Routes.hideContact: (context) => HideContact(),
+    Routes.hideIntroPage: (context) => HideIntroPage(),
+    Routes.hideQRCode: (context) => HideQRCode(),
+    Routes.hideEditPage: (context) => HideEditPage(),
   };
 }
 

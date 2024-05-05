@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:image_picker/image_picker.dart';
 import 'package:login_page/headers.dart';
 
 class StepperController extends ChangeNotifier {

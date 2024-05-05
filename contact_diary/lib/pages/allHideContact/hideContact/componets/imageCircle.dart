@@ -1,8 +1,6 @@
 import 'package:login_page/headers.dart';
 
-import '../../../controller/contactContaroller.dart';
-
-Widget leadingImage(
+Widget hideleadingImage(
     {required index,
     required context,
     required double radius,
@@ -10,15 +8,17 @@ Widget leadingImage(
   return CircleAvatar(
     radius: radius,
     foregroundImage:
-        Provider.of<ContactController>(context).allContact[index].image != null
-            ? FileImage(
+        Provider.of<ContactController>(context).allHideContact[index].image ==
+                null
+            ? null
+            : FileImage(
                 Provider.of<ContactController>(context)
-                    .allContact[index]
+                    .allHideContact[index]
                     .image!,
-              )
-            : null,
+              ),
     child:
-        Provider.of<ContactController>(context).allContact[index].image == null
+        Provider.of<ContactController>(context).allHideContact[index].image ==
+                null
             ? Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
@@ -34,7 +34,7 @@ Widget leadingImage(
                   backgroundColor: Colors.transparent,
                   child: Text(
                     Provider.of<ContactController>(context)
-                        .allContact[index]
+                        .allHideContact[index]
                         .name![0]
                         .toUpperCase(),
                     style: TextStyle(

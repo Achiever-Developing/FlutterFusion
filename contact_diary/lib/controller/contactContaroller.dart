@@ -1,15 +1,11 @@
-import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:login_page/headers.dart';
-
-import '../models/contact.dart';
 
 class ContactController extends ChangeNotifier {
   late SharedPreferences preferences;
   late Contact contact;
 
   List<Contact> allContact = <Contact>[];
+  List<Contact> allHideContact = <Contact>[];
 
   ContactController({required this.preferences});
 
@@ -21,13 +17,37 @@ class ContactController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void removeContact({required Contact contact}) {
-    allContact.add(contact);
+  void removeContact({required index}) {
+    allContact.removeAt(index);
     notifyListeners();
   }
 
   void updateContact({required int index, required Contact contact}) {
     allContact[index] = contact;
+    notifyListeners();
+  }
+
+  void hideAddContact({required Contact contact, required index}) {
+    allContact.removeAt(index);
+    allHideContact.add(contact);
+    print('=====================================');
+    print(allHideContact[0].name);
+    notifyListeners();
+  }
+
+  void hideListContact({required index}) {
+    allHideContact.removeAt(index);
+    notifyListeners();
+  }
+
+  void hideRemoveContact({required index, required contact}) {
+    allHideContact.removeAt(index);
+    allContact.add(contact);
+    notifyListeners();
+  }
+
+  void hideUpdateContact({required int index, required Contact contact}) {
+    allHideContact[index] = contact;
     notifyListeners();
   }
 }

@@ -1,9 +1,4 @@
-import 'package:local_auth/local_auth.dart';
-import 'package:login_page/controller/contactContaroller.dart';
-import 'package:login_page/controller/stepperController.dart';
 import 'package:login_page/headers.dart';
-import 'package:login_page/pages/home_page/componets/imageCircle.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,15 +11,21 @@ class HomePage extends StatelessWidget {
           "${Provider.of<UserNameController>(context).userNameModal.userName}'s Contact",
         ),
         actions: [
-          IconButton(
-            onPressed: () {
+          GestureDetector(
+            onTap: () {
               Provider.of<StepperController>(context, listen: false).reload();
               Navigator.pushNamed(context, Routes.addContact);
             },
-            icon: const Icon(
+            onLongPress: () {
+              Navigator.pushNamed(context, Routes.hideContact);
+            },
+            child: const Icon(
               Icons.add,
             ),
           ),
+          const SizedBox(
+            width: 20,
+          )
         ],
       ),
       body: Padding(
