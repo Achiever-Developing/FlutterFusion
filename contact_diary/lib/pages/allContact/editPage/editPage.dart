@@ -1,14 +1,13 @@
-import 'dart:io';
 import 'package:login_page/headers.dart';
 
-class EditPage extends StatelessWidget {
-  EditPage({super.key});
+class EditContact extends StatelessWidget {
+  EditContact({super.key});
 
   Contact contact = Contact(
     name: "Name",
     contact: "+91 0000000000",
     email: "demo@gmail.com",
-    image: File(""),
+    image: "",
   );
 
   @override

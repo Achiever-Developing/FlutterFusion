@@ -8,7 +8,7 @@ class AddContact extends StatelessWidget {
     name: "Name",
     contact: "+91 0000000000",
     email: "demo@gmail.com",
-    image: File(""),
+    image: "",
   );
 
   @override
@@ -21,7 +21,7 @@ class AddContact extends StatelessWidget {
           children: [
             stepper(context: context, contact: contact),
             ElevatedButton(
-              onPressed: () {
+              onPressed: () async {
                 if (ContactGlobal.form[0].currentState!.validate()) {
                   ContactGlobal.form[0].currentState!.save();
                 }
@@ -31,7 +31,7 @@ class AddContact extends StatelessWidget {
                 if (ContactGlobal.form[2].currentState!.validate()) {
                   ContactGlobal.form[2].currentState!.save();
                 }
-                contact.image = ContactGlobal.contactImage;
+
                 Provider.of<ContactController>(context, listen: false)
                     .addContact(contact: contact);
                 if (ContactGlobal.form[0].currentState!.validate() &&

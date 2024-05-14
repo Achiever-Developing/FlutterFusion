@@ -24,8 +24,7 @@ Widget container({required index, required context}) {
           Align(
             alignment: const Alignment(0, -0.2),
             child: Text(
-              Provider.of<ContactController>(context).allContact[index].name
-                  as String,
+              Provider.of<ContactController>(context).allName[index] as String,
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -36,7 +35,7 @@ Widget container({required index, required context}) {
           Align(
             alignment: const Alignment(0, 0.2),
             child: Text(
-              "+91 ${Provider.of<ContactController>(context).allContact[index].contact as String}",
+              "+91 ${Provider.of<ContactController>(context).allNumber[index]}",
               style: const TextStyle(
                 color: Colors.grey,
               ),
@@ -54,8 +53,7 @@ Widget container({required index, required context}) {
                       scheme: 'tel',
                       path:
                           Provider.of<ContactController>(context, listen: false)
-                              .allContact[index]
-                              .contact,
+                              .allNumber[index],
                     );
                     await launchUrl(call);
                   },
@@ -71,8 +69,7 @@ Widget container({required index, required context}) {
                       scheme: 'sms',
                       path:
                           Provider.of<ContactController>(context, listen: false)
-                              .allContact[index]
-                              .contact,
+                              .allNumber[index],
                     );
                     await launchUrl(sms);
                   },
@@ -88,8 +85,7 @@ Widget container({required index, required context}) {
                       scheme: 'mailto',
                       path:
                           Provider.of<ContactController>(context, listen: false)
-                              .allContact[index]
-                              .email,
+                              .allEmail[index],
                     );
                     await launchUrl(email);
                   },

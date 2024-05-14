@@ -16,8 +16,7 @@ class QRCode extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              Provider.of<ContactController>(context).allContact[index].name
-                  as String,
+              Provider.of<ContactController>(context).allName[index],
               style: const TextStyle(
                 fontSize: 36,
               ),
@@ -37,9 +36,7 @@ class QRCode extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: QrImageView(
-                data: Provider.of<ContactController>(context)
-                    .allContact[index]
-                    .contact as String,
+                data: Provider.of<ContactController>(context).allNumber[index],
                 size: 200,
               ),
             ),

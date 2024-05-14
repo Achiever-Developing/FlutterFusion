@@ -1,5 +1,8 @@
 import 'dart:io';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 import 'package:login_page/headers.dart';
+import 'package:path_provider/path_provider.dart';
 
 class StepperController extends ChangeNotifier {
   int CurrentStep = 0;
@@ -50,5 +53,22 @@ class StepperController extends ChangeNotifier {
       ContactGlobal.contactImage = File(file.path);
       notifyListeners();
     }
+  }
+
+  Future<Uint8List> getFileFromWidget() async {
+    RenderRepaintBoundary boundary = ContactGlobal.form[3].currentContext!
+        .findRenderObject() as RenderRepaintBoundary;
+    ui.Image image = await boundary.toImage(
+      pixelRatio: 2,
+    );
+    ByteData? data = await image.toByteData(
+      format: ui.ImageByteFormat.png,
+    );
+    Uint8List list = data!.buffer.asUint8List();
+
+    Directory directory = await getTemporaryDirectory();
+    String file = directory.path;
+
+    return list;
   }
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:login_page/headers.dart';
 
 Widget stepper({required context, required contact}) {
@@ -98,41 +99,47 @@ Widget stepper({required context, required contact}) {
         ),
       ),
       //image
-      Step(
-        title: const Text("Add Image"),
-        isActive: Provider.of<StepperController>(context).isActive(index: 3),
-        state: Provider.of<StepperController>(context).getStepState(index: 3),
-        content: Stack(
-          children: [
-            CircleAvatar(
-              radius: 80,
-              foregroundImage: ContactGlobal.contactImage != null
-                  ? FileImage(ContactGlobal.contactImage!)
-                  : FileImage(
-                      File(
-                        'lib/assets/images/bg.jpg',
-                      ),
-                    ),
-            ),
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: ElevatedButton(
-                onPressed: () {
-                  Provider.of<StepperController>(context, listen: false)
-                      .getImage(source: ImageSource.gallery);
-                },
-                style: const ButtonStyle(
-                  shape: MaterialStatePropertyAll(
-                    CircleBorder(),
-                  ),
-                ),
-                child: const Icon(Icons.add),
-              ),
-            ),
-          ],
-        ),
-      ),
+      // Step(
+      //   title: const Text("Add Image"),
+      //   isActive: Provider.of<StepperController>(context).isActive(index: 3),
+      //   state: Provider.of<StepperController>(context).getStepState(index: 3),
+      //   content: Stack(
+      //     children: [
+      //       RepaintBoundary(
+      //         key: ContactGlobal.form[3],
+      //         child: CircleAvatar(
+      //           radius: 80,
+      //           foregroundImage: ContactGlobal.contactImage != null
+      //               ? FileImage(ContactGlobal.contactImage!)
+      //               : FileImage(
+      //                   File(
+      //                     'lib/assets/images/bg.jpg',
+      //                   ),
+      //                 ),
+      //         ),
+      //       ),
+      //       Positioned(
+      //         bottom: 0,
+      //         right: 0,
+      //         child: ElevatedButton(
+      //           onPressed: () {
+      //             Provider.of<StepperController>(context, listen: false)
+      //                 .getImage(source: ImageSource.gallery);
+      //             contact.image =
+      //                 Provider.of<StepperController>(context, listen: false)
+      //                     .getFileFromWidget();
+      //           },
+      //           style: const ButtonStyle(
+      //             shape: MaterialStatePropertyAll(
+      //               CircleBorder(),
+      //             ),
+      //           ),
+      //           child: const Icon(Icons.add),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     ],
   );
 }

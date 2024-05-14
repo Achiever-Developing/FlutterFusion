@@ -5,6 +5,7 @@ class HideIntroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ContactController listenable = Provider.of<ContactController>(context);
     int index = ModalRoute.of(context)!.settings.arguments as int;
     return Scaffold(
       appBar: AppBar(
@@ -35,10 +36,8 @@ class HideIntroPage extends StatelessWidget {
                 Navigator.pop(context);
                 Provider.of<ContactController>(context, listen: false)
                     .hideRemoveContact(
-                        contact: Provider.of<ContactController>(context,
-                                listen: false)
-                            .allHideContact[index],
-                        index: index);
+                  index: index,
+                );
               }
             },
           )
@@ -50,7 +49,7 @@ class HideIntroPage extends StatelessWidget {
           child: Stack(
             children: [
               // container
-              container(index: index, context: context),
+              hidecontainer(index: index, context: context),
               //image
               Align(
                 alignment: const Alignment(0, -1),
@@ -62,7 +61,7 @@ class HideIntroPage extends StatelessWidget {
                 ),
               ),
               // sub row
-              subContainer(index: index, context: context),
+              hidesubContainer(index: index, context: context),
             ],
           ),
         ),
@@ -97,21 +96,10 @@ class HideIntroPage extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(Routes.hideEditPage, arguments: index);
+                    Share.share(
+                      "Name : ${listenable.allName[index]} \nContact Number : ${listenable.allNumber[index]}",
+                    );
                   },
-                  icon: const Icon(
-                    Icons.edit,
-                  ),
-                ),
-                const Text("Edit")
-              ],
-            ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  onPressed: () {},
                   icon: const Icon(
                     Icons.share,
                   ),

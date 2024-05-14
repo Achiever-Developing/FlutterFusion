@@ -5,6 +5,7 @@ class IntroPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ContactController listenable = Provider.of<ContactController>(context);
     int index = ModalRoute.of(context)!.settings.arguments as int;
     return Scaffold(
       appBar: AppBar(
@@ -35,10 +36,11 @@ class IntroPage extends StatelessWidget {
                 Navigator.pop(context);
                 Provider.of<ContactController>(context, listen: false)
                     .hideAddContact(
-                        contact: Provider.of<ContactController>(context,
-                                listen: false)
-                            .allContact[index],
-                        index: index);
+                  index: index,
+                  name: listenable.allName[index],
+                  number: listenable.allNumber[index],
+                  email: listenable.allEmail[index],
+                );
               }
             },
           )
@@ -98,7 +100,7 @@ class IntroPage extends StatelessWidget {
                 IconButton(
                   onPressed: () {
                     Navigator.of(context)
-                        .pushNamed(Routes.editPage, arguments: index);
+                        .pushNamed(Routes.editContact, arguments: index);
                   },
                   icon: const Icon(
                     Icons.edit,
@@ -111,7 +113,11 @@ class IntroPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Share.share(
+                      "Name : ${listenable.allName[index]} \nContact Number : ${listenable.allNumber[index]}",
+                    );
+                  },
                   icon: const Icon(
                     Icons.share,
                   ),

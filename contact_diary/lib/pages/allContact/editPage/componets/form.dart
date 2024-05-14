@@ -37,7 +37,7 @@ Widget formOf({required contact, required context, required index}) {
             },
             validator: (val) => (val!.isEmpty) ? "Enter your username" : null,
             initialValue:
-                Provider.of<ContactController>(context).allContact[index].name,
+                Provider.of<ContactController>(context).allName[index],
           ),
         ),
         const SizedBox(
@@ -73,9 +73,8 @@ Widget formOf({required contact, required context, required index}) {
                 : (val.length == 10)
                     ? null
                     : "Enter 10 Number",
-            initialValue: Provider.of<ContactController>(context)
-                .allContact[index]
-                .contact,
+            initialValue:
+                Provider.of<ContactController>(context).allNumber[index],
           ),
         ),
         const SizedBox(
@@ -106,7 +105,7 @@ Widget formOf({required contact, required context, required index}) {
             },
             validator: (val) => (val!.isEmpty) ? "Enter Contact Email" : null,
             initialValue:
-                Provider.of<ContactController>(context).allContact[index].email,
+                Provider.of<ContactController>(context).allEmail[index],
           ),
         ),
         const SizedBox(

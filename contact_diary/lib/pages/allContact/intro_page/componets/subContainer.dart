@@ -31,7 +31,7 @@ Widget subContainer({required index, required context}) {
                       style: TextStyle(color: Colors.grey),
                     ),
                     Text(
-                        "+91 ${Provider.of<ContactController>(context).allContact[index].contact}")
+                        "+91 ${Provider.of<ContactController>(context).allNumber[index]}")
                   ],
                 ),
               ),
@@ -48,8 +48,7 @@ Widget subContainer({required index, required context}) {
                           scheme: 'tel',
                           path: Provider.of<ContactController>(context,
                                   listen: false)
-                              .allContact[index]
-                              .contact,
+                              .allNumber[index],
                         );
                         await launchUrl(call);
                       },
@@ -65,8 +64,7 @@ Widget subContainer({required index, required context}) {
                           scheme: 'sms',
                           path: Provider.of<ContactController>(context,
                                   listen: false)
-                              .allContact[index]
-                              .contact,
+                              .allNumber[index],
                         );
                         await launchUrl(sms);
                       },
@@ -82,8 +80,7 @@ Widget subContainer({required index, required context}) {
                           scheme: 'mailto',
                           path: Provider.of<ContactController>(context,
                                   listen: false)
-                              .allContact[index]
-                              .email,
+                              .allEmail[index],
                         );
                         await launchUrl(email);
                       },
@@ -109,7 +106,7 @@ Widget subContainer({required index, required context}) {
               child: Row(
                 children: [
                   Text(
-                    "Message +91 ${Provider.of<ContactController>(context).allContact[index].contact}",
+                    "Message +91 ${Provider.of<ContactController>(context).allNumber[index]}",
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
@@ -138,7 +135,7 @@ Widget subContainer({required index, required context}) {
               child: Row(
                 children: [
                   Text(
-                    "Voice call +91 ${Provider.of<ContactController>(context).allContact[index].contact}",
+                    "Voice call +91 ${Provider.of<ContactController>(context).allNumber[index]}",
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
@@ -167,7 +164,7 @@ Widget subContainer({required index, required context}) {
               child: Row(
                 children: [
                   Text(
-                    "Video call +91 ${Provider.of<ContactController>(context).allContact[index].contact}",
+                    "Video call +91 ${Provider.of<ContactController>(context).allNumber[index]}",
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

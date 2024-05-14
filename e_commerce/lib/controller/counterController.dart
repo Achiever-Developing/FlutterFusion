@@ -1,6 +1,4 @@
-import 'package:e_commerce/controller/cartController.dart';
 import 'package:e_commerce/headers.dart';
-import 'package:e_commerce/utils/all_data.dart';
 
 class CounterController extends ChangeNotifier {
   List Counter = List.generate(allData.length, (index) => 1);

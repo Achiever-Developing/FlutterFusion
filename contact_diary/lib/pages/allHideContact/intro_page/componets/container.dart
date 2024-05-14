@@ -1,6 +1,6 @@
 import 'package:login_page/headers.dart';
 
-Widget container({required index, required context}) {
+Widget hidecontainer({required index, required context}) {
   return Align(
     alignment: const Alignment(0, -0.8),
     child: Container(
@@ -24,8 +24,7 @@ Widget container({required index, required context}) {
           Align(
             alignment: const Alignment(0, -0.2),
             child: Text(
-              Provider.of<ContactController>(context).allHideContact[index].name
-                  as String,
+              Provider.of<ContactController>(context).allHideName[index],
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -36,7 +35,7 @@ Widget container({required index, required context}) {
           Align(
             alignment: const Alignment(0, 0.2),
             child: Text(
-              "+91 ${Provider.of<ContactController>(context).allHideContact[index].contact as String}",
+              "+91 ${Provider.of<ContactController>(context).allHideNumber[index]}",
               style: const TextStyle(
                 color: Colors.grey,
               ),
@@ -54,8 +53,7 @@ Widget container({required index, required context}) {
                       scheme: 'tel',
                       path:
                           Provider.of<ContactController>(context, listen: false)
-                              .allHideContact[index]
-                              .contact,
+                              .allHideNumber[index],
                     );
                     await launchUrl(call);
                   },
@@ -71,8 +69,7 @@ Widget container({required index, required context}) {
                       scheme: 'sms',
                       path:
                           Provider.of<ContactController>(context, listen: false)
-                              .allHideContact[index]
-                              .contact,
+                              .allHideNumber[index],
                     );
                     await launchUrl(sms);
                   },
@@ -88,8 +85,7 @@ Widget container({required index, required context}) {
                       scheme: 'mailto',
                       path:
                           Provider.of<ContactController>(context, listen: false)
-                              .allHideContact[index]
-                              .email,
+                              .allHideEmail[index],
                     );
                     await launchUrl(email);
                   },

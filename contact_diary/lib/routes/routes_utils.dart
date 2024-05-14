@@ -8,11 +8,10 @@ class Routes {
   static String addContact = 'addcontact';
   static String introPage = 'intropage';
   static String QRcode = 'qrcode';
-  static String editPage = 'editpage';
+  static String editContact = 'editcontact';
   static String hideContact = 'hidecontact';
   static String hideIntroPage = 'hideintroPage';
   static String hideQRCode = 'hideqrCode';
-  static String hideEditPage = 'hideEditPage';
 
   static Map<String, WidgetBuilder> routes = {
     Routes.loginpage: (context) => LoginPage(),
@@ -21,11 +20,10 @@ class Routes {
     Routes.addContact: (context) => AddContact(),
     Routes.introPage: (context) => IntroPage(),
     Routes.QRcode: (context) => QRCode(),
-    Routes.editPage: (context) => EditPage(),
+    Routes.editContact: (context) => EditContact(),
     Routes.hideContact: (context) => HideContact(),
     Routes.hideIntroPage: (context) => HideIntroPage(),
     Routes.hideQRCode: (context) => HideQRCode(),
-    Routes.hideEditPage: (context) => HideEditPage(),
   };
 }
 

@@ -1,6 +1,6 @@
 import 'package:login_page/headers.dart';
 
-Widget subContainer({required index, required context}) {
+Widget hidesubContainer({required index, required context}) {
   return Align(
     alignment: const Alignment(0, 1),
     child: Container(
@@ -31,7 +31,7 @@ Widget subContainer({required index, required context}) {
                       style: TextStyle(color: Colors.grey),
                     ),
                     Text(
-                        "+91 ${Provider.of<ContactController>(context).allHideContact[index].contact}")
+                        "+91 ${Provider.of<ContactController>(context).allHideNumber[index]}")
                   ],
                 ),
               ),
@@ -48,8 +48,7 @@ Widget subContainer({required index, required context}) {
                           scheme: 'tel',
                           path: Provider.of<ContactController>(context,
                                   listen: false)
-                              .allHideContact[index]
-                              .contact,
+                              .allHideNumber[index],
                         );
                         await launchUrl(call);
                       },
@@ -65,8 +64,7 @@ Widget subContainer({required index, required context}) {
                           scheme: 'sms',
                           path: Provider.of<ContactController>(context,
                                   listen: false)
-                              .allHideContact[index]
-                              .contact,
+                              .allHideNumber[index],
                         );
                         await launchUrl(sms);
                       },
@@ -82,8 +80,7 @@ Widget subContainer({required index, required context}) {
                           scheme: 'mailto',
                           path: Provider.of<ContactController>(context,
                                   listen: false)
-                              .allHideContact[index]
-                              .email,
+                              .allHideEmail[index],
                         );
                         await launchUrl(email);
                       },
@@ -109,7 +106,7 @@ Widget subContainer({required index, required context}) {
               child: Row(
                 children: [
                   Text(
-                    "Message +91 ${Provider.of<ContactController>(context).allHideContact[index].contact}",
+                    "Message +91 ${Provider.of<ContactController>(context).allHideNumber[index]}",
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
@@ -138,7 +135,7 @@ Widget subContainer({required index, required context}) {
               child: Row(
                 children: [
                   Text(
-                    "Voice call +91 ${Provider.of<ContactController>(context).allHideContact[index].contact}",
+                    "Voice call +91 ${Provider.of<ContactController>(context).allHideNumber[index]}",
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
@@ -167,7 +164,7 @@ Widget subContainer({required index, required context}) {
               child: Row(
                 children: [
                   Text(
-                    "Video call +91 ${Provider.of<ContactController>(context).allHideContact[index].contact}",
+                    "Video call +91 ${Provider.of<ContactController>(context).allHideNumber[index]}",
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

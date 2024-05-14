@@ -36,5 +36,7 @@ export 'pages/allContact/intro_page/componets/subContainer.dart';
 export 'package:qr_flutter/qr_flutter.dart';
 export 'pages/allHideContact/hideContact/componets/imageCircle.dart';
 export 'package:login_page/pages/allHideContact/QRcode/QRcode.dart';
-export 'package:login_page/pages/allHideContact/editPage/editPage.dart';
 export 'package:login_page/pages/allHideContact/intro_page/intro_page.dart';
+export 'pages/allHideContact/intro_page/componets/container.dart';
+export 'pages/allHideContact/intro_page/componets/subContainer.dart';
+export 'package:share_plus/share_plus.dart';

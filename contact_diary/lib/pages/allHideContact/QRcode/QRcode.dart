@@ -16,8 +16,7 @@ class HideQRCode extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              Provider.of<ContactController>(context).allHideContact[index].name
-                  as String,
+              Provider.of<ContactController>(context).allHideName[index],
               style: const TextStyle(
                 fontSize: 36,
               ),
@@ -38,8 +37,7 @@ class HideQRCode extends StatelessWidget {
               ),
               child: QrImageView(
                 data: Provider.of<ContactController>(context)
-                    .allHideContact[index]
-                    .contact as String,
+                    .allHideNumber[index],
                 size: 200,
               ),
             ),
